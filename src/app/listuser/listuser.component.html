@@ -1,0 +1,45 @@
+<!-- listuser.component.html -->
+
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="sidebar">
+    <app-menu></app-menu>
+  </div>
+
+  <div class="content">
+    <div *ngIf="users && users.length > 0">
+      <h2>Liste des Utilisateurs</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.nomUser }}</td>
+            <td>{{ user.prenomUser }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+                            <!-- Add a button to view QR code for each user -->
+              <button *ngIf="user.idUser" (click)="viewQRCode(user.idUser)" class="btn btn-qrcode-custom">QR Code</button>
+              <button *ngIf="user.idUser" (click)="generatePDF(user.idUser)" class="btn btn-pdf-custom">PDF</button>
+              <button class="btn btn-custom" [routerLink]="['/updateuser', user.idUser]">Modifier</button>
+              <button *ngIf="user.idUser" (click)="deleteUser(user.idUser)" class="btn btn-danger-custom">Supprimer</button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="!users || users.length === 0">
+      <p>Aucun utilisateur trouvé.</p>
+    </div>
+  </div>
+</div>
