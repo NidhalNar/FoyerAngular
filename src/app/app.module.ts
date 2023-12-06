@@ -19,6 +19,7 @@ import { UniversitiesComponent } from './universities/universities.component';
 import { UpdatefoyerComponent } from './updatefoyer/updatefoyer.component';
 import { UpdateUniComponent } from './update-uni/update-uni.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
     UpdatefoyerComponent,
     UpdateUniComponent,
     NotfoundComponent,
+   
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import { UpdatefoyerComponent } from './updatefoyer/updatefoyer.component';
 import { AuthGuard } from './Services/AuthGuard';
 import { NotfoundComponent } from './notfound/notfound.component';
 
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'adduser', component: AddUserComponent, canActivate: [AuthGuard] },
@@ -22,18 +23,22 @@ const routes: Routes = [
   { path: 'updateuser/:id', component: UpdateuserComponent, canActivate: [AuthGuard] },
   { path: 'listuser', component: ListuserComponent, canActivate: [AuthGuard] },
   { path: 'user/:id/qr-code', component: UserQRCodeComponent, canActivate: [AuthGuard] },
-  { path: 'universite', component: UniversitiesComponent, canActivate: [AuthGuard] },
+  { path: 'universite', component: UniversitiesComponent},
   { path: 'foyer', component: FoyersComponent, canActivate: [AuthGuard] },
  //{ path: 'foyer', loadChildren: () => import('./foyers/foyers/foyers.module').then(m => m.FoyersModule), canActivate: [AuthGuard] },
 
   { path: 'updateuni/:id', component: UpdateUniComponent, canActivate: [AuthGuard] },
   { path: 'updatefoyer/:id', component: UpdatefoyerComponent, canActivate: [AuthGuard] },
+  { path: 'Etudiant', data: { breadcrumb: 'Etudiant' }, loadChildren: () => import('../app/features/etudiant/etudiant.module').then(m=>m.EtudiantModule) },
   { path: '**', component: NotfoundComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
