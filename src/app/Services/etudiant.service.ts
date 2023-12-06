@@ -17,15 +17,15 @@ export class EtudiantService {
   }
  
   fetchEtudiantById(id: bigint) {
-    return this._http.get<Etudiant>(this.apiUrl +'/retrieve-etudiant/{etudiant-id}'+ id);
+    return this._http.get<Etudiant>(this.apiUrl +'/retrieve-etudiant/'+ id);
   }
   updateEtudiant(etudiant: Etudiant, id: bigint) {
-    return this._http.put(this.apiUrl+'/update-etudiant '+ id,etudiant);
+    return this._http.put(this.apiUrl+'/update-etudiant /'+ id,etudiant);
   }
   addEtudiant(etudiant: any): Observable<any> {
     return this._http.post(this.apiUrl+'/add-etudiant', etudiant);
   }
   removeEtudiant(id: BigInt | undefined) {
-    return this._http.delete(this.apiUrl + id);
+    return this._http.delete(this.apiUrl +"/remove-etudiant/"+ id);
   }
 }

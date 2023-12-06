@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Etudiant } from '../Models/Etudiant';
 import { Router } from '@angular/router';
 import { EtudiantService } from '../Services/etudiant.service';
+import { AuthService } from '../Services/Auth.service';
 @Component({
   selector: 'app-list-etudiant',
   templateUrl: './list-etudiant.component.html',
@@ -18,7 +19,7 @@ export class ListEtudiantComponent implements OnInit ,OnDestroy{
   EtudiantNew: Etudiant = { idEtudiant: BigInt(0) , nomEt: '', prenomEt: '' };
   
   
-  constructor(private _router: Router, private _etudiantService: EtudiantService) {}
+  constructor(private _router: Router, private _etudiantService: EtudiantService,private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
    
@@ -51,5 +52,13 @@ export class ListEtudiantComponent implements OnInit ,OnDestroy{
   this.searchResults = this.listEtudiants!.filter(Etu =>
     Etu.nomEt?.toLowerCase().indexOf(this.searchTerm.toLowerCase())!==-1
   );
+}
+
+logout() {
+  // Set the token to null, effectively logging the user out
+  this.authService.setToken(null);
+
+  // Redirect to the login page (or any other desired page)
+  this.router.navigate(['/login']);
 }
 }

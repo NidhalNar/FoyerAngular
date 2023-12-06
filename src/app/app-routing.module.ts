@@ -13,6 +13,7 @@ import { UpdateUniComponent } from './update-uni/update-uni.component';
 import { UpdatefoyerComponent } from './updatefoyer/updatefoyer.component';
 import { AuthGuard } from './Services/AuthGuard';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ListEtudiantComponent } from './list-etudiant/list-etudiant.component';
 
 
 const routes: Routes = [
@@ -29,8 +30,12 @@ const routes: Routes = [
 
   { path: 'updateuni/:id', component: UpdateUniComponent, canActivate: [AuthGuard] },
   { path: 'updatefoyer/:id', component: UpdatefoyerComponent, canActivate: [AuthGuard] },
+
   { path: 'Etudiant', data: { breadcrumb: 'Etudiant' }, loadChildren: () => import('../app/features/etudiant/etudiant.module').then(m=>m.EtudiantModule) },
+    { path: 'listetu', component: ListEtudiantComponent, canActivate: [AuthGuard] },
+
   { path: '**', component: NotfoundComponent },
+
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   
 
