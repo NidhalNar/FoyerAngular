@@ -63,8 +63,10 @@
           </div>
   
           <label for="capacitebloc">Capacity:</label>
-          <input type="text" id="capacitebloc" name="capacitebloc" [(ngModel)]="newBloc.capacitebloc" class="form-control" required>
-  
+          <input type="text" id="capacitebloc" name="capacitebloc" [(ngModel)]="newBloc.capacitebloc" class="form-control" required pattern="[0-9999].*">
+          <div *ngIf="blocForm.controls['capacitebloc']?.hasError('pattern')" style="color: red;">
+            Bloc capacity contain only numbers
+          </div>
           <button type="submit" class="btn btn-success" [disabled]="!blocForm.valid">Add</button>
         </form>
       </div>

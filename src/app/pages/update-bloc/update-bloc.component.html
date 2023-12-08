@@ -21,7 +21,8 @@
 
         <div class="form-group">
           <label for="capacitebloc"> Bloc Capacity:</label>
-          <input type="text" id="capacitebloc" formControlName="capacitebloc" class="form-control">
+          <input type="text" id="capacitebloc" formControlName="capacitebloc" class="form-control" required pattern="[0-9999].*">
+          
         </div>
 
         <button type="submit" [disabled]="reactiveForm.invalid" class="btn btn-primary">Update</button>
