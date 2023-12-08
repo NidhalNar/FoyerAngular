@@ -1,31 +1,55 @@
+<!-- add-user.component.html -->
+
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="sidebar">
-      <app-menu></app-menu>
-    </div>
-    <div class="content">
-      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form-container">
-        <label for="nomUser">Nom:</label>
-        <input type="text" id="nomUser" formControlName="nomUser" required>
-  
-        <label for="prenomUser">Prénom:</label>
-        <input type="text" id="prenomUser" formControlName="prenomUser" required>
-  
-        <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email" required>
-  
-        <label for="motdepasse">Mot de passe:</label>
-        <input type="password" id="motdepasse" formControlName="motdepasse" required>
-  
-        <label for="role">Rôle:</label>
-        <select id="role" formControlName="role" required class="form-select" aria-label="Default select example">
-            <option value="ADMIN">ADMIN</option>
-            <option value="RESPONSABLE">RESPONSABLE</option>
-            <option value="ETUDIANT">ETUDIANT</option>
-        </select>
-        <div class="submit-button">
-            <button type="submit" class="btn btn-primary btn-lg">Ajouter Utilisateur</button>
-        </div>
-      </form>
-    </div>
+  <div class="sidebar">
+    <app-menu></app-menu>
   </div>
+  <div class="content">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="form-container">
+      <label for="nomUser">Nom:</label>
+      <input type="text" id="nomUser" name="nomUser" ngModel required>
+      <div *ngIf="userForm.controls['nomUser']?.touched && userForm.controls['nomUser']?.hasError('required') " style="color: red;" >
+        Nom est requis.
+      </div>
+
+      <label for="prenomUser">Prénom:</label>
+      <input type="text" id="prenomUser" name="prenomUser" ngModel required>
+      <div *ngIf="userForm.controls['prenomUser']?.touched && userForm.controls['prenomUser']?.hasError('required')" style="color: red;">
+        Prénom est requis.
+      </div>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" ngModel required email>
+      <div *ngIf="userForm.controls['email']?.touched && userForm.controls['email']?.hasError('required')" style="color: red;">
+        Email est requis.
+      </div>
+      <div *ngIf="userForm.controls['email']?.touched && userForm.controls['email']?.hasError('email')" style="color: red;">
+        Veuillez saisir une adresse email valide.
+      </div>
+
+      <label for="motdepasse">Mot de passe:</label>
+      <input type="password" id="motdepasse" name="motdepasse" ngModel required minlength="6">
+      <div *ngIf="userForm.controls['motdepasse']?.touched && userForm.controls['motdepasse']?.hasError('required')" style="color: red;">
+        Mot de passe est requis.
+      </div>
+      <div *ngIf="userForm.controls['motdepasse']?.touched && userForm.controls['motdepasse']?.hasError('minlength')" style="color: red;">
+        Mot de passe doit contenir au moins 6 caractères.
+      </div>
+
+      <label for="role">Rôle:</label>
+      <select id="role" name="role" ngModel required>
+        <option value="ADMIN">ADMIN</option>
+        <option value="RESPONSABLE">RESPONSABLE</option>
+        <option value="ETUDIANT">ETUDIANT</option>
+      </select>
+      <div *ngIf="userForm.controls['role']?.touched && userForm.controls['role']?.hasError('required')" style="color: red;">
+        Rôle est requis.
+      </div>
+
+      <div class="submit-button">
+        <button type="submit" class="btn btn-primary btn-lg" [disabled]="userForm.invalid">Ajouter Utilisateur</button>
+      </div>
+    </form>
+  </div>
+</div>

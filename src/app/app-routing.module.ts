@@ -33,10 +33,10 @@ const routes: Routes = [
 
   { path: 'Etudiant', data: { breadcrumb: 'Etudiant' }, loadChildren: () => import('../app/features/etudiant/etudiant.module').then(m=>m.EtudiantModule) },
     { path: 'listetu', component: ListEtudiantComponent, canActivate: [AuthGuard] },
-
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: NotfoundComponent },
 
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
   
 
 ];
