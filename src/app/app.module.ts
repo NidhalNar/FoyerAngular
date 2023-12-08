@@ -20,6 +20,10 @@ import { UpdatefoyerComponent } from './updatefoyer/updatefoyer.component';
 import { UpdateUniComponent } from './update-uni/update-uni.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CommonModule } from '@angular/common';
+import { AddBlocComponent } from './pages/add-bloc/add-bloc.component';
+import { AddChambreComponent } from './pages/add-chambre/add-chambre.component';
+import { UpdateBlocComponent } from './pages/update-bloc/update-bloc.component';
+import { UpdateChambreComponent } from './pages/update-chambre/update-chambre.component';
 
 
 @NgModule({
@@ -39,6 +43,10 @@ import { CommonModule } from '@angular/common';
     UpdatefoyerComponent,
     UpdateUniComponent,
     NotfoundComponent,
+    AddBlocComponent,
+    AddChambreComponent,
+    UpdateBlocComponent,
+    UpdateChambreComponent,
    
   ],
   imports: [

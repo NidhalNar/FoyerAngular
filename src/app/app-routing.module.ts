@@ -30,7 +30,8 @@ const routes: Routes = [
 
   { path: 'updateuni/:id', component: UpdateUniComponent, canActivate: [AuthGuard] },
   { path: 'updatefoyer/:id', component: UpdatefoyerComponent, canActivate: [AuthGuard] },
-
+  { path: 'Bloc',data:{breadcrumb:'Bloc'},loadChildren:()=>import('../app/features/bloc/bloc.module').then(m=>m.BlocModule)},
+  { path: 'Chambre',data:{breadcrumb:'Chambre'},loadChildren:()=>import('../app/features/chambre/chambre.module').then(m=>m.ChambreModule)},
   { path: 'Etudiant', data: { breadcrumb: 'Etudiant' }, loadChildren: () => import('../app/features/etudiant/etudiant.module').then(m=>m.EtudiantModule) },
     { path: 'listetu', component: ListEtudiantComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },

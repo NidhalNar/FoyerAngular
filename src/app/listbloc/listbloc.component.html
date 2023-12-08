@@ -1,0 +1,114 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mx-6">
+    <div class="container-fluid">
+      <!-- Add image before the "Accueil" link -->
+      <a class="navbar-brand" href="#">
+        <img src="../../assets/OIP.jpeg" alt="Logo" height="40" width="80" class="mr-2">
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto"> <!-- Align items to the right -->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/home">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/adduser">Utilisateur</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/listetu">Etudiant</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/universite">Université</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/foyer">Foyer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/foyer">Reservation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Bloc/list">Bloc</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Chambre/listchambre">Chambre</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" >Déconnexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container mt-4">
+    <div>
+      <label for="searchTerm">Search Bloc:</label>
+      <input type="text" id="searchTerm" [(ngModel)]="searchTerm">
+      <button class="btn btn-primary" (click)="searchByName()">Search</button>
+    </div>
+      <div *ngIf="searchResults.length > 0; else listBloc">
+        <table class="table mt-3">
+          <thead>
+            <tr>
+              <th>Bloc Name</th>
+              <th>Capacité Bloc</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bloc of searchResults">
+              <td>{{ bloc.nomBloc }}</td>
+              <td>{{ bloc.capacitebloc }}</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteBloc(bloc.idBloc)">Delete</button>
+                <button class="btn btn-warning" (click)="navigateToUpdateBloc(bloc.idBloc)">Modify</button>
+
+                
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+      <!-- etudiant list -->
+      <ng-template #listBloc>
+        <div *ngIf=" listBlocs.length > 0; else noData">
+          <table class="table mt-3">
+            <thead>
+              <tr>
+                <th>Bloc Name</th>
+                <th>Capacité Bloc</th>
+              <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let bloc of listBlocs">
+                <td>{{bloc.nomBloc}}</td>
+                <td>{{bloc.capacitebloc }}</td>
+                
+              
+                <td>
+                  <button class="btn btn-danger" (click)="deleteBloc(bloc.idBloc)">Delete</button>
+                  
+                  <button class="btn btn-warning" (click)="navigateToUpdateBloc(bloc.idBloc)">Modify</button>
+
+                 
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    
+        <ng-template #noData>
+          <p>No Bloc available.</p>
+        </ng-template>
+    
+        <button class="btn btn-primary" (click)="goToAddBlocPage()">Add Bloc</button>
+
+        
+        
+      </ng-template>
