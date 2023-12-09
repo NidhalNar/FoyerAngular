@@ -31,7 +31,7 @@ export class EtudiantService {
   addEtudiant(etudiant: any): Observable<any> {
     return this._http.post(this.apiUrl+'/add-etudiant', etudiant);
   }
-  removeEtudiant(id: BigInt | undefined) {
+  removeEtudiant(id: number| undefined) {
     return this._http.delete(this.apiUrl +'/remove-etudiant/'+ id);
   }
   fetchReservationsForEtudiant(etudiantId: number): Observable<any[]> {

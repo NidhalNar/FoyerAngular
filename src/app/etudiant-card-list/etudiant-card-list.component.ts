@@ -24,6 +24,10 @@ export class EtudiantCardListComponent implements OnInit,OnDestroy {
   ngOnDestroy(): void {
     console.log('I m unmounted');
   }
+  deleteEtudiant(id:number| undefined) {
+    this._etudiantService.removeEtudiant(id).subscribe({
+      next : ()=>this.listEtudiant = this.listEtudiant! .filter(etudiant=>etudiant.idEtudiant!== id)
+    })}
   /*deleteEtudiant(id: BigInt | undefined) {
     this._etudiantService.removeEtudiant(id).subscribe({
       next : ()=> Etudiant.idEtudiant!== id

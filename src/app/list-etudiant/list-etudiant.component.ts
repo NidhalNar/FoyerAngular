@@ -40,12 +40,8 @@ export class ListEtudiantComponent implements OnInit {
     
   }
  
- /*deleteEtudiant(id: BigInt | undefined) {
-  this._etudiantService.removeEtudiant(id).subscribe({
-    next : ()=>this.listEtudiants = this.listEtudiants .filter(etudiant=>etudiant.idEtudiant!== id)
-  });
-}
- searchByName() {
+ 
+ /*searchByName() {
   if (this.searchTerm.trim() === '') {
     this.searchResults = [];
     return;

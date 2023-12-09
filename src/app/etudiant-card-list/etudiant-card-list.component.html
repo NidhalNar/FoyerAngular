@@ -34,10 +34,8 @@
       <button mat-button mat-raised-button color="primary" [routerLink]="['update', etudiant.idEtudiant]">
         Update Etudiant
       </button>
-  
-      <button mat-button mat-raised-button color="accent">
-        Delete
-      </button>
+      <button class="btn btn-danger" (click)="deleteEtudiant(etudiant.idEtudiant)">Delete</button>
+      
   
     </mat-card-actions>
   
