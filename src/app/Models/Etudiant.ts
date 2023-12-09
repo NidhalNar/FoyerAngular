@@ -1,11 +1,14 @@
+import { Reservation } from "./Reservation";
+
 export class Etudiant {
 
-    idEtudiant?: BigInt;
+    idEtudiant?: number;
     nomEt?: string;
    ecole?:string;
    prenomEt?: string;
    dateNaissance?:string;
-    cin?: bigint;
+    cin?: BigInt;
     studentEmail?: string;
-
+    reservations?: Reservation[];
+    selectedReservationId?: number;
 }

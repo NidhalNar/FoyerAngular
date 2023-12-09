@@ -1,58 +1,42 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mx-6">
-  <div class="container-fluid">
-    <!-- Add image before the "Accueil" link -->
-    <a class="navbar-brand" href="#">
-      <img src="../../assets/OIP.jpeg" alt="Logo" height="40" width="80" class="mr-2">
-    </a>
+<div class="etudiants-panel">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <div class="header">
+
+    <h2 class="title">All Students</h2>
+
+    <button mat-mini-fab routerLink="/Etudiant/add">
+      <mat-icon class="add-etudiant-btn">add</mat-icon>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto"> <!-- Align items to the right -->
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/home">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/adduser">Utilisateur</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/listetu">Etudiant</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/universite">Université</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/foyer">Foyer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/foyer">Reservation</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/foyer">Bloc</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/foyer">Chambre</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Déconnexion</a>
-        </li>
-      </ul>
-    </div>
   </div>
-</nav>
 
-<div class="container mt-4">
-    <!--div>
+
+  <mat-tab-group>
+
+        <mat-tab label="liste">
+
+            <app-etudiant-card-list [listEtudiant]="listEtudiants">
+
+            </app-etudiant-card-list>
+
+        </mat-tab>
+  </mat-tab-group>
+        
+
+    
+
+
+
+</div>
+
+<!--div class="container mt-4">
+    <div>
         <label for="searchTerm">Search University:</label>
         <input type="text" id="searchTerm" [(ngModel)]="searchTerm">
         <button class="btn btn-primary" (click)="searchByName()">Search</button>
-    </div-->
+    </div>
   
-    <!-- Display search results or the list  -->
+    
     <div *ngIf="searchResults.length > 0; else listEtudiant">
       <table class="table mt-3">
         <thead>
@@ -69,7 +53,7 @@
             <td>{{ etudiant.studentEmail }}</td>
             <td>
               <button class="btn btn-danger" (click)="deleteEtudiant(etudiant.idEtudiant)">Delete</button>
-              <button class="btn btn-warning" (click)="UpdateEtudiant(etudiant.idEtudiant)">Modify</button>
+              <button class="btn btn-warning" (click)="navigateToUpdate(etudiant.idEtudiant)">Modify</button>
               
             </td>
           </tr>
@@ -77,7 +61,7 @@
       </table>
     </div>
   
-    <!-- etudiant list -->
+    
     <ng-template #listEtudiant>
       <div *ngIf=" listEtudiants.length > 0; else noData">
         <table class="table mt-3">
@@ -88,6 +72,7 @@
               <th>Ecole</th>
               <th>Email</th>
               <th>Cin</th>
+             
               <th>DateNaissance</th>
             <th>Actions</th>
             </tr>
@@ -97,13 +82,14 @@
               <td>{{etudiant.nomEt}}</td>
               <td>{{ etudiant.prenomEt }}</td>
               <td>{{etudiant.ecole}}</td>
-              <td>{{etudiant.studentEmail}}</td>
-            <td>{{etudiant.cin}}</td>
             
+            <td>{{etudiant.studentEmail}}</td>
+            <td>{{etudiant.cin}}</td>
             <td>{{etudiant.dateNaissance}}</td>
+            
               <td>
                 <button class="btn btn-danger" (click)="deleteEtudiant(etudiant.idEtudiant)">Delete</button>
-                <button class="btn btn-warning" (click)="UpdateEtudiant(etudiant.idEtudiant)">Modify</button>
+                <button class="btn btn-warning" (click)="navigateToUpdate(etudiant.idEtudiant)">Modify</button>
                
               </td>
             </tr>
@@ -119,3 +105,5 @@
         {{ showForm ? 'Cancel' : 'Add Etudiant' }}
       </button>
     </ng-template>
+  
+</div!-->

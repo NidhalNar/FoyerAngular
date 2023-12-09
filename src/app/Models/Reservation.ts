@@ -1,7 +1,13 @@
-export class Status {
-   
-    type: string = "";
-}
+export enum ReservationStatus {
+    Annulee = 'Annulee',
+    Confirmee = 'Confirmee',
+    EnAttente = 'NON_CONFIRMEE',
+  }
+
+
+  export class Status {
+    type: ReservationStatus = ReservationStatus.EnAttente;
+  }
 export class Chambre {
    
     idChambre?:bigint;

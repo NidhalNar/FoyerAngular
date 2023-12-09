@@ -1,113 +1,59 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EtudiantService } from '../Services/etudiant.service';
+import { Etudiant } from '../Models/Etudiant';
 
 @Component({
   selector: 'app-etudiant',
   templateUrl: './etudiant.component.html',
   styleUrls: ['./etudiant.component.css']
 })
-export class EtudiantComponent implements OnInit {
-
-  constructor(private activatedRoute:ActivatedRoute,private fb:FormBuilder,private _etudiantService:EtudiantService,private router:Router){}
-  id: bigint = 0n;
-  
-  EtudiantFormBuilder = {};
-  EtudiantFormB : FormGroup =new FormGroup({});
-  nouvelEtudiant: string = '';
-  
+export class EtudiantComponent  {
  
-  get nomEt() {
-    return this.EtudiantFormB.controls['nomEt'];
-  }
-  get ecole() {
-    return this.EtudiantFormB.controls['ecole'];
-  }
 
-  get prenomEt() {
-    return this.EtudiantFormB.controls['prenomEt'];
-  }
-  get dateNaissance() {
-    return this.EtudiantFormB.controls['dateNaissance']
-  }
-  get studentEmail() {
-    return this.EtudiantFormB.controls['studentEmail']
-  }
-  get cin() {
-    return this.EtudiantFormB.controls['cin']
-  }
-
+  etudiantForm!: FormGroup;
  
-  ngOnInit() {
-    this.activatedRoute.params.subscribe((param)=>this.id = param['id'])
-   
-    
-    this.id !== undefined && 
-      this._etudiantService.fetchEtudiantById(this.id).subscribe({
-        next: (data) => {
-          this.EtudiantFormB.patchValue({
-            nomEt: data.nomEt,
-            prenomEt: data.prenomEt,
-            dateNaissance: data.dateNaissance,
-            studentEmail: data.studentEmail,
-           ecole: data.ecole,
-            
-            cin:data.cin
-          })
-      }
-    })
-   this.EtudiantFormBuilder = this.fb.group({
-    nomEt: [{ value: '', disabled: true }],
-    prenomEt: ['', [Validators.required,Validators.minLength(3),]],
-   
-   });
-    
-    console.log(this.EtudiantFormBuilder);
+  constructor(private fb: FormBuilder, private etudiantService: EtudiantService) { }
 
-    this.EtudiantFormB = this.fb.group({
-      nomEt: ['', [Validators.required, Validators.minLength(3)]],
-      prenomEt: ['', [Validators.required, Validators.minLength(3)]],
-      studentEmail: [ '',[ Validators.required,Validators.pattern( '([a-zA-Z0-9._-]+@gmail.com|[a-zA-Z0-9._-]+@esprit.tn)' ),],],
-        
-      cin: [ , [Validators.required, Validators.pattern('[0-9]')], ],
-      dateNaissance: ["", [Validators.required]],
-      ecole: ["", [Validators.required]],
-     
+  ngOnInit(): void {
+    // Initialisez le formulaire avec les contrôles requis
+    this.etudiantForm = this.fb.group({
+      nomEt: ['', Validators.required],
+      prenomEt: ['', Validators.required],
+      ecole: ['', Validators.required],
+      dateNaissance: ['', Validators.required],
+      studentEmail: ['', [Validators.required, Validators.email]],
+      cin: ['', Validators.required],
+       // Initialisez le FormArray pour les réservations
     });
-  }
- 
-  ajouterEtudiant() {
-    // Créez un objet représentant les données de l'étudiant
-    const etudiant = { nom: this.nouvelEtudiant };
-
-    // Utilisez le service pour ajouter l'étudiant
-    this._etudiantService.addEtudiant(etudiant).subscribe(
-      response => {
-        this.router.navigate(['']);
-        console.log('Étudiant ajouté avec succès', response);
-      },
-      error => {
-        console.error('Erreur lors de l\'ajout de l\'étudiant', error);
-      }
-    );
-  }
- 
-  add() {
+  
+    
    
-    if (this.id !== undefined) {
-      this._etudiantService.updateEtudiant(this.EtudiantFormB.getRawValue(), this.id).subscribe({
-        next: () => this.router.navigate(['']),
-      });
-    }
-    else {
+    
+  }
+  
+
+  
+  submitForm(): void {
+    if (this.etudiantForm.valid) {
+      const etudiantWithReservations = this.etudiantForm.value;
       
-       
-      this._etudiantService. addEtudiant(this.EtudiantFormB.getRawValue()).subscribe({
-        next: () => this.router.navigate(['']),
-        
-      });
+      this.etudiantService.addEtudiant(etudiantWithReservations).subscribe(
+        etudiant => {
+          console.log('Etudiant ajouté avec succès', etudiant);
+         
+        },
+        error => {
+          console.error('Erreur lors de l\'ajout de l\'étudiant:', error);
+          
+        }
+      );
+    } else {
+      console.log('Formulaire non valide. Vérifiez les erreurs.');
     }
   }
+
+  
 }
 
