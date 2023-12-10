@@ -25,6 +25,7 @@ import { AddChambreComponent } from './pages/add-chambre/add-chambre.component';
 import { UpdateBlocComponent } from './pages/update-bloc/update-bloc.component';
 import { UpdateChambreComponent } from './pages/update-chambre/update-chambre.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -54,9 +55,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule, // Include ReactiveFormsModule here
+    ReactiveFormsModule, 
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],

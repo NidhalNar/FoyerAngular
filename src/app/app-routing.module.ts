@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'updateuser/:id', component: UpdateuserComponent, canActivate: [AuthGuard] },
   { path: 'listuser', component: ListuserComponent, canActivate: [AuthGuard] },
   { path: 'user/:id/qr-code', component: UserQRCodeComponent, canActivate: [AuthGuard] },
-  { path: 'universite', component: UniversitiesComponent},
+  { path: 'universite', component: UniversitiesComponent , canActivate: [AuthGuard]},
   { path: 'foyer', component: FoyersComponent, canActivate: [AuthGuard] },
  //{ path: 'foyer', loadChildren: () => import('./foyers/foyers/foyers.module').then(m => m.FoyersModule), canActivate: [AuthGuard] },
 
@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'Bloc',data:{breadcrumb:'Bloc'},loadChildren:()=>import('../app/features/bloc/bloc.module').then(m=>m.BlocModule)},
   { path: 'Chambre',data:{breadcrumb:'Chambre'},loadChildren:()=>import('../app/features/chambre/chambre.module').then(m=>m.ChambreModule)},
   { path: 'Etudiant', data: { breadcrumb: 'Etudiant' }, loadChildren: () => import('../app/features/etudiant/etudiant.module').then(m=>m.EtudiantModule) },
-    { path: 'listetu', component: ListEtudiantComponent, canActivate: [AuthGuard] },
+   // { path: 'listetu', component: ListEtudiantComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: NotfoundComponent },
 
