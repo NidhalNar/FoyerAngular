@@ -1,49 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mx-6">
-  <div class="container-fluid">
-    <!-- Add image before the "Accueil" link -->
-    <a class="navbar-brand" href="#">
-      <img src="../../assets/OIP.jpeg" alt="Logo" height="40" width="80" class="mr-2">
-    </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto"> <!-- Align items to the right -->
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/home">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/adduser">Utilisateur</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/listetu">Etudiant</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/universite">Université</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/foyer">Foyer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/foyer">Reservation</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Bloc/list">Bloc</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Chambre/listchambre">Chambre</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" >Déconnexion</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <div class="container mt-5">
     <div class="card">
       <div class="card-body">
@@ -53,14 +8,14 @@
           
   
           <div class="form-group">
-            <label for="nomEt">First Name:</label>
+            <label for="nomEt">FirstName:</label>
             <input type="text" id="nomEt" formControlName="nom" pattern="[A-Za-z].*" class="form-control">
             <div *ngIf="etuForm.get('nom')?.hasError('pattern')" style="color: red;">
               Etudiant name must start with a letter.
             </div>
           </div>
           <div class="form-group">
-            <label for="prenomEt">Last Name:</label>
+            <label for="prenomEt">LastName:</label>
             <input type="text" id="prenomEt" formControlName="prenom" pattern="[A-Za-z].*" class="form-control">
             <div *ngIf="etuForm.get('prenom')?.hasError('pattern')" style="color: red;">
               LastName must start with a letter.
@@ -76,7 +31,7 @@
             </div>
           
           <div class="form-group">
-            <label for="dateNaissance">Date de Naissance:</label>
+            <label for="dateNaissance">Birthdate:</label>
             <input type="date" id="dateNaissance" formControlName="date" class="form-control">
             <div *ngIf="etuForm.get('date')?.hasError('pattern')" style="color: red;">
               Date incorrecte. Veuillez saisir une date valide au format YYYY-MM-DD.
@@ -85,7 +40,7 @@
           
           </div>
           <div class="form-group">
-            <label for="studentEmail">Email de l'étudiant :</label>
+            <label for="studentEmail">Student Email </label>
             <input type="text" id="studentEmail" formControlName="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="form-control">
             <div *ngIf="etuForm.get('Email')?.hasError('pattern')" style="color: red;">
               Adresse email invalide. Veuillez saisir une adresse email valide.
@@ -93,7 +48,7 @@
           </div>
           
           <div class="form-group">
-            <label for="cin">cin:</label>
+            <label for="cin">Cin:</label>
             <input type="text" id="cin" formControlName="cin" pattern="[0-9]+" class="form-control">
             <div *ngIf="etuForm.get('cin')?.hasError('pattern')" style="color: red;">
               Cin invalide. Veuillez saisir uniquement des chiffres.

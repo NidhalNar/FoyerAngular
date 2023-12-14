@@ -4,9 +4,10 @@ import { ListEtudiantComponent } from 'src/app/list-etudiant/list-etudiant.compo
 import { EtudiantComponent } from 'src/app/etudiant/etudiant.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UpdateEtudiantComponent } from 'src/app/update-etudiant/update-etudiant.component';
+import { AuthGuard } from 'src/app/Services/AuthGuard';
 const routes: Routes = [
-	{ path: 'add', component: EtudiantComponent },
-  {path:'update/:id',component:UpdateEtudiantComponent},
+	{ path: 'add', component: EtudiantComponent , canActivate: [AuthGuard] },
+  {path:'update/:id',component:UpdateEtudiantComponent , canActivate: [AuthGuard]},
 	{ path: '', component: ListEtudiantComponent },
 	
   ];

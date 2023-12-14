@@ -26,6 +26,7 @@ import { UpdateBlocComponent } from './pages/update-bloc/update-bloc.component';
 import { UpdateChambreComponent } from './pages/update-chambre/update-chambre.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { MatDialogModule } from '@angular/material/dialog';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +38,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     InscriptionComponent,
     MenuComponent,
     UpdateuserComponent,
-    ListuserComponent,
+    //ListuserComponent,
     UserQRCodeComponent,
-    FoyersComponent,
+    //FoyersComponent,
     UniversitiesComponent,
     UpdatefoyerComponent,
     UpdateUniComponent,
@@ -48,6 +49,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AddChambreComponent,
     UpdateBlocComponent,
     UpdateChambreComponent,
+    FooterComponent,
    
    
   ],

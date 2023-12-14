@@ -4,11 +4,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListchambreComponent } from 'src/app/listchambre/listchambre.component';
 import { AddChambreComponent } from 'src/app/pages/add-chambre/add-chambre.component';
+import { AuthGuard } from 'src/app/Services/AuthGuard';
 
 const routes: Routes = [
-  {path:'listchambre',component:ListchambreComponent},
-  {path:'addChambre', component:AddChambreComponent},
-  { path: 'updateChambre/:id', component: UpdateChambreComponent }
+  {path:'listchambre',component:ListchambreComponent , canActivate: [AuthGuard]},
+  {path:'addChambre', component:AddChambreComponent , canActivate: [AuthGuard]},
+  { path: 'updateChambre/:id', component: UpdateChambreComponent , canActivate: [AuthGuard]}
 
 ];
 

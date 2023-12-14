@@ -1,48 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mx-6">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="../../assets/OIP.jpeg" alt="Logo" height="40" width="80" class="mr-2">
-      </a>
-  
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto"> <!-- Align items to the right -->
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/home">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/adduser">Utilisateur</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Etudiant">Etudiant</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/universite">Université</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/foyer">Foyer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/foyer">Reservation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Bloc/list">Bloc</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Chambre/listchambre">Chambre</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Déconnexion</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
 <div class="container mt-4">
     <!-- Display search results or the list of blocs -->
     <div *ngIf="searchResults.length > 0; else listChambre">
@@ -53,7 +9,7 @@
     <ng-template #listChambre>
       <!-- Bloc Form always visible -->
       <div>
-        <h2 class="mt-3">Add Chambre</h2>
+        <h2 class="mt-3">Add Chamber</h2>
         <form #chambreForm="ngForm" (ngSubmit)="addChambre(newChambre)">
           <label for="numeroChambre">Numero Chambre:</label>
           <input type="text" id="numeroChambre" name="numeroChambre" [(ngModel)]="newChambre.numeroChambre" class="form-control" required pattern="[0-9].*">
@@ -61,7 +17,7 @@
             Only Numbers are accepted
           </div>
   
-          <label for="typeC">Type Chambre:</label>
+          <label for="typeC">Type Chamber:</label>
           <input type="text" id="typeC" name="typeC" [(ngModel)]="newChambre.typeC" class="form-control" required>
   
           <button type="submit" class="btn btn-success" [disabled]="!chambreForm.valid">Add</button>

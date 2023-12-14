@@ -83,6 +83,6 @@ exportExcel(): void {
 }
 
 navigateToUpdatefoyer(id: number) {
-  this._router.navigate(['/updatefoyer', id]);
+  this._router.navigate(['foy/updatefoyer', id]);
 }
 }

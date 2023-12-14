@@ -1,49 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mx-6">
-  <div class="container-fluid">
-    <!-- Add image before the "Accueil" link -->
-    <a class="navbar-brand" href="#">
-      <img src="../../assets/OIP.jpeg" alt="Logo" height="40" width="80" class="mr-2">
-    </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto"> <!-- Align items to the right -->
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/home">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/adduser">Utilisateur</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/listetu">Etudiant</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/universite">Université</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/foyer">Foyer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/foyer">Reservation</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Bloc/list">Bloc</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Chambre/listchambre">Chambre</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Déconnexion</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <div class="container">
     <h2>Ajouter un étudiant avec réservations</h2>
     <form [formGroup]="etudiantForm" (ngSubmit)="submitForm()">

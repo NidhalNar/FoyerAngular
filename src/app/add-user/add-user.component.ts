@@ -19,7 +19,7 @@ export class AddUserComponent {
       this.userService.addUser(user).subscribe(
         (response) => {
           console.log('User added successfully:', response);
-          this.router.navigate(['/listuser']);
+          this.router.navigate(['/user/listuser']);
         },
         (error) => {
           console.error('Error adding user:', error);

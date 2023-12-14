@@ -50,7 +50,7 @@ export class UpdateuserComponent implements OnInit {
       this.userService.updateUser(userId, updatedUser).subscribe((user) => {
         console.log('Utilisateur mis à jour avec succès', user);
         // Ajoutez une redirection ou d'autres actions nécessaires après la mise à jour
-        this.router.navigate(['/listuser']);
+        this.router.navigate(['/user/listuser']);
       });
     }
   }
